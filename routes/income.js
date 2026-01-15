@@ -28,4 +28,16 @@ router.post("/", auth, async (req, res) => {
   res.status(201).json(income);
 });
 
+router.delete("/:id", auth, async (req, res) => {
+  try {
+    await Income.findOneAndDelete({
+      _id: req.params.id,
+      userId: req.user._id,
+    });
+    res.json({ success: true });
+  } catch (err) {
+    res.status(500).json({ message: "Delete failed" });
+  }
+});
+
 export default router;
