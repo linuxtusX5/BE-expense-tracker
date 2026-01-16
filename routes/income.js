@@ -22,6 +22,7 @@ router.post("/", auth, async (req, res) => {
     userId: req.user._id,
     amount: req.body.amount,
     source: req.body.source,
+    description: req.body.description,
   });
 
   await income.save();
