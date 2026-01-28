@@ -11,13 +11,18 @@ const incomeSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    description: {
+      type: String,
+      required: true,
+      trim: true,
+    },
     source: String,
     date: {
       type: Date,
       default: Date.now,
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 export default mongoose.model("Income", incomeSchema);
